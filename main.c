@@ -1,34 +1,72 @@
 #include "minilibx/mlx.h"
 #include "../LibFt/libft.h"
 
-int	ft_putkeynbr(int keycode, void *param)
+typedef struct		s_mlx
 {
-	int		x;
-	int		y;
+	void			*content;
+	void			*win;
+	void			*mlx;
+	void			*img;
+	size_t			content_size;
+	struct s_list	*next;
+}					t_mlx;
 
-	ft_putnbr(keycode);
-	ft_putendl(" correspond a la touche");
-	while (x < 400)
+int	ft_putkeynbr(int keycode, t_mlx *param)
+{
+/*	float		x;
+	float		y;
+	float		size;
+	int			left;
+	int			top;
+
+	size = 100;
+*/	ft_putnbr(keycode);
+	ft_putchar('\n');
+/*	x = 1;
+	left = 400;
+	top = 200;
+	size = 400;
+*/	if (keycode == 53)
+		exit(0);
+/*	if (keycode == 69)
+		size = size * 1.5;
+	if (keycode == 78)
+		size = size * 0.5;
+	if (keycode == 123)
+		left -= 10;
+	if (keycode == 124)
+		left += 10;
+	if (keycode == 125)
+		top += 10;
+	if (keycode == 126)
+		top -= 10;
+	while (x < size)
 	{
 		y = -x;
 		while ( y < x + 1)
 		{
-			mlx_pixel_put(param[0], param[1], 400 + (y / 2), 200 + x, 0x00FF000A - x * y);
+			mlx_pixel_put(param->mlx, param->win, left + (y / 2), top + x, 0x00606060 + 10 * keycode);
 		y++;
 		}
 	x++;
 	}
-
+*/
 	return (keycode);
 }
 
-int	main(void)
+int			main(void)
 {
-	void	*prs[2];
+	t_mlx	*prs;
+	int		si;
+	void	*img;
 
-	prs[0] = mlx_init();
-	prs[1] = mlx_new_window(prs[0], 800, 800, "mlx 42");
-	mlx_key_hook(prs[1], ft_putkeynbr, &*prs);
-	mlx_loop(prs[0]);
+	si = 400;	
+	prs = ft_memalloc(sizeof(t_mlx));
+	prs->mlx = mlx_init();
+	prs->win = mlx_new_window(prs->mlx, 800, 800, "mlx 42");
+	img = mlx_xpm_file_to_image(prs->mlx, "logo_test_xpm.xpm", &si, &si);
+	mlx_put_image_to_window(prs->mlx, prs->win, img, 400, 400);
+	mlx_key_hook(prs->win, ft_putkeynbr, prs);
+	mlx_loop(prs->mlx);
 	return (0);
 }
