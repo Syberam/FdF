@@ -1,56 +1,55 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fdf_test.c                                         :+:      :+:    :+:   */
+/*   ft_stock_peaks.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sbonnefo <sbonnefo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/02/20 16:30:11 by sbonnefo          #+#    #+#             */
-/*   Updated: 2017/02/22 12:43:58 by sbonnefo         ###   ########.fr       */
+/*   Created: 2017/02/23 13:18:03 by sbonnefo          #+#    #+#             */
+/*   Updated: 2017/03/01 16:41:05 by sbonnefo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "src/fdf.h"
 
-typedef struct	s_peak
+t_peak	*ft_newpeak(t_peak *before)
 {
-	int			x;
-	int			y;
-	int			z;
-	s_peak		*next;
-}				t_peak;
+	t_peak	*new;
 
-int		main(int argc, char **argv)
+	if (!(new = (t_peak *)ft_memalloc(sizeof(t_peak))))
+		return (0);
+	if (!before)
+		return(new);
+	before->next = new;
+	return (new);
+}
+
+t_peak	*ft_stock_peaks(char *file_path)
 {
+	t_peak		*start;
+	t_peak		*current;
 	char		*line;
 	char		**point;
-	int			fd;
-	int			x;
-	int			y;
-	int			z;
-	t_mlx		*param;
-	int			si;
+	int			val[3];
 
-
-	if (argc < 2)
-		ft_putstr("usage : fdf <nom_fichier.fdf>");
-	si = 50;
-	param = ft_memalloc(sizeof(t_mlx));
-	param->mlx = mlx_init();
-	param->win = mlx_new_window(param->mlx, 800,800, "mlx 42");
-	fd = (const int)open(argv[1], O_RDONLY);
-	y = 0;
-	while (get_next_line(fd, &line) != 0)
+	if (!(val[0] = (const int)open(file_path, O_RDONLY)))
+		return (0);
+	start = NULL;
+	start = ft_newpeak(start);
+	current = start;
+	val[2] = 0;
+	while (get_next_line(val[0], &line) != 0)
 	{
 		point = ft_strsplit(line, ' ');
-		x = 0;
-		while (point[x])
+		val[1] = -1;
+		while (point[++val[1]])
 		{
-			z = ft_atoi(point[x]);
-		mlx_string_put(param->mlx, param->win, 100 + 30 * x, 100 + 30 * y, 0x00FFFFFF - 100000 * z, point[x]);
-			x++;
+			current->z = ft_atoi(point[val[1]]);
+			current->y = val[2];
+			current->x = val[1];
+			current = ft_newpeak(current);
 		}
-		y++;
+		val[2]++;
 	}
-	mlx_loop(param->mlx);
+	return (start);
 }
