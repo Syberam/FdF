@@ -6,7 +6,7 @@
 /*   By: sbonnefo <sbonnefo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/01 12:42:46 by sbonnefo          #+#    #+#             */
-/*   Updated: 2017/03/01 16:42:37 by sbonnefo         ###   ########.fr       */
+/*   Updated: 2017/03/08 19:06:33 by sbonnefo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,6 @@ void		ft_peaks_to_plan(t_peak *peak)
 	int		ox;
 	int		oy;
 
-	ft_img_size(peak);
 	ox = (peak->w) / 2; 
 	oy = (peak->h) / 2; 
 	while (peak)
@@ -49,4 +48,5 @@ void		ft_peaks_to_plan(t_peak *peak)
 		peak->yy = oy + (peak->y * 10) - (10 * peak->z);
 		peak = peak->next;
 	}
+	ft_img_size(peak);
 }
