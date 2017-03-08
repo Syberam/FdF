@@ -6,7 +6,7 @@
 /*   By: sbonnefo <sbonnefo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/01 10:17:44 by sbonnefo          #+#    #+#             */
-/*   Updated: 2017/03/08 19:05:06 by sbonnefo         ###   ########.fr       */
+/*   Updated: 2017/03/08 20:00:33 by sbonnefo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,12 +37,11 @@ void		*ft_putpeaks(t_peak *peak, t_mlx *param)
 	while (peak)
 	{
 		i = 0;
-		while (i < 4 * (peak->xx) * (peak->yy))
+		while (i < 4 * h * w)
 		{
-			ft_putnbr(h);
-			x = (i / 4) % h;
+			x = (i / 4) % w;
 			y = (i / 4) / h;
-			if ((peak->xx == x && peak->yy == y) || x == 0 || y == 0)
+			if ((peak->xx == x && peak->yy == y) || x == 0 ||y == 0 || x == h - 1 || y == w - 1)
 			{
 				data[i + 0] = 0x00;
 				data[i + 1] = 0x00;
