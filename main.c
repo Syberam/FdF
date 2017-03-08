@@ -1,47 +1,42 @@
-#include "minilibx/mlx.h"
-#include "../LibFt/libft.h"
-
-typedef struct		s_mlx
-{
-	void			*content;
-	void			*win;
-	void			*mlx;
-	void			*img;
-	size_t			content_size;
-	struct s_list	*next;
-}					t_mlx;
+#include "src/fdf.h"
 
 int	ft_putkeynbr(int keycode, t_mlx *param)
 {
 	int		si;
 	void	*img;
-/*	float		x;
+	float		x;
 	float		y;
 	float		size;
 	int			left;
 	int			top;
 
 	size = 100;
-*/	si = 50;
+	si = 50;
 	ft_putnbr(keycode);
 	ft_putchar('\n');
-/*	x = 1;
+	x = 1;
 	left = 400;
 	top = 200;
 	size = 400;
-*/	if (keycode == 53)
+	mlx_clear_window(param->mlx, param->win);
+	if (keycode == 53)
 		exit(0);
-/*	if (keycode == 69)
+	if (keycode == 69)
 		size = size * 1.5;
 	if (keycode == 78)
 		size = size * 0.5;
 	if (keycode == 123)
 		left -= 10;
-*/	if (keycode == 124)
-		img = mlx_xpm_file_to_image(param->mlx, "button_right_arrow_dwn.xpm", &si, &si);
+	if (keycode == 124)
+	{
+	img = mlx_xpm_file_to_image(param->mlx, "button_right_arrow_dwn.xpm", &si, &si);
+	mlx_put_image_to_window(param->mlx, param->win, img, 100, 750);
+	mlx_string_put(param->mlx, param->win, 200, 200, 0x00F1F2F3, "Salut les enfants");
+		left += 10;
+	}
 	if (keycode == 125)
-		img = mlx_xpm_file_to_image(param->mlx, "button_right_arrow.xpm", &si, &si);
-/*	if (keycode == 126)
+		top += 10;
+	if (keycode == 126)
 		top -= 10;
 	while (x < size)
 	{
@@ -53,24 +48,22 @@ int	ft_putkeynbr(int keycode, t_mlx *param)
 		}
 	x++;
 	}
-*/
-	mlx_put_image_to_window(param->mlx, param->win, img, 100, 750);
 	return (keycode);
 }
 
 int			main(void)
 {
-	t_mlx	*prs;
+	t_mlx	*param;
+	void	*img2;
 	int		si;
-	void	*img;
 	
 	si = 50;
-	prs = ft_memalloc(sizeof(t_mlx));
-	prs->mlx = mlx_init();
-	prs->win = mlx_new_window(prs->mlx, 800, 800, "mlx 42");
-	img = mlx_xpm_file_to_image(prs->mlx, "button_right_arrow.xpm", &si, &si);
-	mlx_put_image_to_window(prs->mlx, prs->win, img, 100, 750);
-	mlx_key_hook(prs->win, ft_putkeynbr, prs);
-	mlx_loop(prs->mlx);
-	return (0);
+	param = ft_memalloc(sizeof(t_mlx));
+	param->mlx = mlx_init();
+	param->win = mlx_new_window(param->mlx, 800, 800, "mlx 42");
+	img2 = mlx_xpm_file_to_image(param->mlx, "button_right_arrow.xpm", &si, &si);
+	mlx_put_image_to_window(param->mlx, param->win, img2, 100, 750);
+	mlx_key_hook(param->win, ft_putkeynbr, param);
+	mlx_loop(param->mlx);
+return (0);
 }

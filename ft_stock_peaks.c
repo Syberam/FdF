@@ -6,7 +6,7 @@
 /*   By: sbonnefo <sbonnefo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/23 13:18:03 by sbonnefo          #+#    #+#             */
-/*   Updated: 2017/03/01 16:41:05 by sbonnefo         ###   ########.fr       */
+/*   Updated: 2017/03/08 17:00:11 by sbonnefo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,8 @@ t_peak	*ft_stock_peaks(char *file_path)
 	if (!(val[0] = (const int)open(file_path, O_RDONLY)))
 		return (0);
 	start = NULL;
-	start = ft_newpeak(start);
+	if (!(start = (t_peak *)ft_memalloc(sizeof(t_peak))))
+		return (0);
 	current = start;
 	val[2] = 0;
 	while (get_next_line(val[0], &line) != 0)

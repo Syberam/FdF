@@ -6,7 +6,7 @@
 /*   By: sbonnefo <sbonnefo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/24 14:44:08 by sbonnefo          #+#    #+#             */
-/*   Updated: 2017/02/24 18:11:44 by sbonnefo         ###   ########.fr       */
+/*   Updated: 2017/03/01 12:42:31 by sbonnefo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	*ft_seg_to_img(t_peak p1, t_peak p2)
 	{
 		y = i / 100;
 		x = i % 100;
-		if (x = Y)
+		if (x = y)
 		{
 			data[i + 0] = 0x00;
 			data[i + 1] = 0x00;

@@ -6,7 +6,7 @@
 /*   By: sbonnefo <sbonnefo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/17 18:30:34 by sbonnefo          #+#    #+#             */
-/*   Updated: 2017/02/24 18:40:14 by sbonnefo         ###   ########.fr       */
+/*   Updated: 2017/03/08 16:20:58 by sbonnefo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,10 @@ typedef struct		s_peak
 	int				z;
 	int				xx;
 	int				yy;
-	struct s_peak	next;
-}
+	int				w;
+	int				h;
+	struct s_peak	*next;
+}					t_peak;
 
 /*
 typedef struct	s_fdf_pxl
@@ -49,3 +51,7 @@ typedef struct	s_fdf_pxl
 }				t_fdfp;
 */
 #endif
+
+t_peak	*ft_stock_peaks(char *file_path);
+void	ft_peaks_to_plan(t_peak *peak);
+void	*ft_putpeaks(t_peak *peak, t_mlx *param);
