@@ -6,7 +6,7 @@
 /*   By: sbonnefo <sbonnefo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/01 10:17:44 by sbonnefo          #+#    #+#             */
-/*   Updated: 2017/03/08 18:12:38 by sbonnefo         ###   ########.fr       */
+/*   Updated: 2017/03/08 19:05:06 by sbonnefo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,12 @@ void		*ft_putpeaks(t_peak *peak, t_mlx *param)
 	int		bpp;
 	int		endian;
 	int		size_line;
+	int		h;
+	int		w;
 
+	h = peak->h;
+	w = peak->w;
+			ft_putnbr(h);
 	if (!(img = mlx_new_image(param->mlx, peak->w, peak->h)))
 		exit (0);
 	bpp = 32;
@@ -34,8 +39,9 @@ void		*ft_putpeaks(t_peak *peak, t_mlx *param)
 		i = 0;
 		while (i < 4 * (peak->xx) * (peak->yy))
 		{
-			x = (i / 4) % peak->h;
-			y = (i / 4) / peak->h;
+			ft_putnbr(h);
+			x = (i / 4) % h;
+			y = (i / 4) / h;
 			if ((peak->xx == x && peak->yy == y) || x == 0 || y == 0)
 			{
 				data[i + 0] = 0x00;
