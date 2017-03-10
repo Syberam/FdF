@@ -6,7 +6,7 @@
 /*   By: sbonnefo <sbonnefo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/01 10:17:44 by sbonnefo          #+#    #+#             */
-/*   Updated: 2017/03/09 20:10:05 by sbonnefo         ###   ########.fr       */
+/*   Updated: 2017/03/10 13:39:06 by sbonnefo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,6 @@ void	ft_alline(t_peak *start, t_peak *end, char *data)
 	int i;
 
 	i = 1;
-	ft_putnbr(start->xx);
-	ft_putchar('\n');	
-	ft_putnbr(end->xx);
-	ft_putchar('\n');	
 	x = start->xx;
 	y = start->yy;
 	dx = end->xx - x;
@@ -84,12 +80,10 @@ void		*ft_putpeaks(t_peak *peak, t_mlx *param)
 	int		size_line;
 	int		h;
 	int		w;
+	t_peak	*down;
 
 	h = peak->h;
 	w = peak->w;
-			ft_putnbr(h);
-			ft_putchar('\n');
-			ft_putnbr(w);
 	if (!(img = mlx_new_image(param->mlx, peak->w, peak->h)))
 		exit (0);
 	bpp = 32;
@@ -118,6 +112,17 @@ void		*ft_putpeaks(t_peak *peak, t_mlx *param)
 		}*/
 		if (peak->next != NULL && peak->y == (peak->next)->y)
 			ft_alline(peak, peak->next, data);
+		if (peak->next)
+		{
+		down = peak->next;
+		ft_putnbr(down->y);
+		ft_putchar('\t');
+		ft_putnbr(peak->y);
+		ft_putchar('\n');
+		while (down->y != peak->y && down->next)
+			down = down->next;
+		ft_alline(peak, down, data);
+		}
 		peak = peak->next;
 
 	}

@@ -6,7 +6,7 @@
 /*   By: sbonnefo <sbonnefo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/01 12:42:46 by sbonnefo          #+#    #+#             */
-/*   Updated: 2017/03/09 18:01:10 by sbonnefo         ###   ########.fr       */
+/*   Updated: 2017/03/10 13:03:24 by sbonnefo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,6 @@ void			ft_img_size(t_peak *peak)
 			current = current->next;
 		}
 		current = peak;
-		ft_putnbr(w);
-		ft_putchar('\n');
-		ft_putnbr(h);
 		while(current)
 		{
 			current->w = w;
