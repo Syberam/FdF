@@ -16,7 +16,7 @@ t_peak	*ft_newpeak(t_peak *before)
 {
 	t_peak	*new;
 
-	if (!(new = (t_peak *)ft_memalloc(sizeof(t_peak))))
+	if (!(new = (t_peak *)ft_memalloc(sizeof(t_peak) + 1)))
 		return (0);
 	if (!before)
 		return(new);
@@ -34,8 +34,7 @@ t_peak	*ft_stock_peaks(char *file_path)
 
 	if (!(val[0] = (const int)open(file_path, O_RDONLY)))
 		return (0);
-	start = NULL;
-	if (!(start = (t_peak *)ft_memalloc(sizeof(t_peak))))
+	if (!(start = (t_peak *)ft_memalloc(sizeof(t_peak) + 1)))
 		return (0);
 	current = start;
 	val[2] = 0;

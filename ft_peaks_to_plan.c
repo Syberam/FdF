@@ -21,7 +21,7 @@ void			ft_img_size(t_peak *peak)
 		w = 0;
 		h = 0;
 		current = peak;
-		while (current->next)
+		while (current)
 		{
 			if (current->xx > w)
 				w = current->xx;
@@ -32,11 +32,10 @@ void			ft_img_size(t_peak *peak)
 		current = peak;
 		while(current)
 		{
-			current->w = w;
-			current->h = h;
+			current->w = w + 1;
+			current->h = h + 1;
 			current = current->next;
 		}
-
 }
 
 void		ft_peaks_to_plan(t_peak *peak)
@@ -50,8 +49,8 @@ void		ft_peaks_to_plan(t_peak *peak)
 	init = 0;
 	while (peak)
 	{
-		peak->xx = -(peak->y * 20) + (peak->x * 20);
-		peak->yy = (peak->y * 20) - (21 * peak->z);
+		peak->xx = (peak->x * 2) + (peak->y * 1);
+		peak->yy = (peak->y * 3) - (2 * peak->z);
 		peak = peak->next;
 	}
 	peak = start;

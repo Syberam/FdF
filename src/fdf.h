@@ -55,3 +55,4 @@ typedef struct	s_fdf_pxl
 t_peak	*ft_stock_peaks(char *file_path);
 void	ft_peaks_to_plan(t_peak *peak);
 void	*ft_putpeaks(t_peak *peak, t_mlx *param);
+void	ft_line_al(t_peak *start, t_peak *end, char *data);
