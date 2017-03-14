@@ -6,7 +6,7 @@
 /*   By: sbonnefo <sbonnefo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/17 18:30:34 by sbonnefo          #+#    #+#             */
-/*   Updated: 2017/03/08 16:20:58 by sbonnefo         ###   ########.fr       */
+/*   Updated: 2017/03/14 17:17:23 by sbonnefo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,20 @@
 # include "mlx/mlx.h"
 # include <fcntl.h>
 
+typedef struct		s_pers
+{
+	int				zoom;
+	int				xxx;
+	int				xz;
+	int				yyy;
+	int				yz;
+}					t_pers;
+
 typedef struct		s_fdf_img
 {
 	void			*img;
+	t_pers			*pers;
+	s_fdf_img		*next;
 }					t_fdfi;
 
 typedef	struct		s_mlx
@@ -52,6 +63,7 @@ typedef struct	s_fdf_pxl
 */
 #endif
 
+int		ft_putkeynbr(int keycode, t_mlx *param);
 t_peak	*ft_stock_peaks(char *file_path);
 void	ft_peaks_to_plan(t_peak *peak);
 void	*ft_putpeaks(t_peak *peak, t_mlx *param);
