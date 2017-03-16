@@ -6,7 +6,7 @@
 /*   By: sbonnefo <sbonnefo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/01 10:17:44 by sbonnefo          #+#    #+#             */
-/*   Updated: 2017/03/10 13:39:06 by sbonnefo         ###   ########.fr       */
+/*   Updated: 2017/03/16 14:33:12 by sbonnefo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,6 @@ void		*ft_putpeaks(t_peak *peak, t_mlx *param)
 	int		size_line;
 	t_peak	*down;
 
-	ft_putnbr(peak->w);
-	ft_putchar('\t');
-	ft_putnbr(peak->h);
-	ft_putchar('\n');
 	if (!(img = mlx_new_image(param->mlx, peak->w, peak->h)))
 		exit (0);
 	bpp = 32;
