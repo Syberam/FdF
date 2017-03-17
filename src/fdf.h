@@ -6,7 +6,7 @@
 /*   By: sbonnefo <sbonnefo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/17 18:30:34 by sbonnefo          #+#    #+#             */
-/*   Updated: 2017/03/17 10:50:37 by sbonnefo         ###   ########.fr       */
+/*   Updated: 2017/03/17 19:14:27 by sbonnefo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,18 @@ typedef	struct			s_mlx
 	size_t				content_size;
 	struct s_mlx		*next;
 }						t_mlx;
+
+typedef struct			s_lpar
+{
+	int					cumul;
+	int					dx;
+	int					dy;
+	int					xi;
+	int					yi;
+	int					x;
+	int					y;
+	int					i;
+}						t_lp;
 
 int		ft_putkeynbr(int keycode, t_mlx *param);
 t_peak	*ft_stock_peaks(char *file_path);

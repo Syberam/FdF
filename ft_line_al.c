@@ -6,23 +6,11 @@
 /*   By: sbonnefo <sbonnefo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/17 16:37:23 by sbonnefo          #+#    #+#             */
-/*   Updated: 2017/03/17 19:07:16 by sbonnefo         ###   ########.fr       */
+/*   Updated: 2017/03/17 19:14:35 by sbonnefo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "src/fdf.h"
-
-typedef struct	s_lparam
-{
-	int			cumul;
-	int			dx;
-	int			dy;
-	int			xi;
-	int			yi;
-	int			x;
-	int			y;
-	int			i;
-}				t_lp;
 
 void	ft_do_line(t_peak *start, t_lp par, char *data, int dir)
 {
