@@ -6,7 +6,7 @@
 /*   By: sbonnefo <sbonnefo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/01 12:42:46 by sbonnefo          #+#    #+#             */
-/*   Updated: 2017/03/16 20:46:55 by sbonnefo         ###   ########.fr       */
+/*   Updated: 2017/03/17 10:51:54 by sbonnefo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,8 @@ void		ft_peaks_to_plan(t_peak *peak, t_pers *pers)
 	start = peak;
 	while (peak)
 	{
-		peak->xx = (peak->x * pers->x * pers->zoom) + (peak->y * pers->yx * pers->zoom);
-		peak->yy = (peak->y * pers->y * pers->zoom) - (pers->zy * peak->z * pers->zoom);
+		peak->xx = (pers->zoom) * (peak->x * pers->x) + (peak->y * pers->yx) + (pers->zx * peak->z);
+		peak->yy = (pers->zoom) * (peak->y * pers->y) - (pers->zy * peak->z) + (peak->x*pers->xy);
 		peak = peak->next;
 	}
 	peak = start;

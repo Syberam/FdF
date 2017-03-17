@@ -5,12 +5,13 @@ t_pers	*ft_pers_init(t_mlx *param)
 	t_pers	*pers;
 
 	pers = (t_pers *)ft_memalloc(sizeof(t_pers));
-
 	pers->zoom = 1;
-	pers->x = 1;
-	pers->yx = 1;
-	pers->y = 1;
-	pers->zy = 1;
+	pers->x = 2;
+	pers->zx = 0;
+	pers->yx = 2;
+	pers->y = 2;
+	pers->zy = 5;
+	pers->xy = 0;
 	param->pers = pers;
 	return (pers);
 }

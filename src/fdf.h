@@ -6,7 +6,7 @@
 /*   By: sbonnefo <sbonnefo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/17 18:30:34 by sbonnefo          #+#    #+#             */
-/*   Updated: 2017/03/16 20:17:09 by sbonnefo         ###   ########.fr       */
+/*   Updated: 2017/03/17 10:50:37 by sbonnefo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,11 @@
 
 typedef struct		s_peak
 {
-	int				x;
-	int				y;
-	int				z;
-	int				xx;
-	int				yy;
+	float			x;
+	float			y;
+	float			z;
+	float			xx;
+	float			yy;
 	int				w;
 	int				h;
 	struct s_peak	*next;
@@ -31,11 +31,13 @@ typedef struct		s_peak
 
 typedef struct			s_pers
 {
-	int					zoom;
-	int					x;
-	int					yx;
-	int					y;
-	int					zy;
+	float				zoom;
+	float				x;
+	float				yx;
+	float				zx;
+	float				y;
+	float				zy;
+	float				xy;
 }						t_pers;
 
 typedef struct			s_fdf_img

@@ -6,7 +6,7 @@
 /*   By: sbonnefo <sbonnefo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/14 16:22:44 by sbonnefo          #+#    #+#             */
-/*   Updated: 2017/03/16 17:22:16 by sbonnefo         ###   ########.fr       */
+/*   Updated: 2017/03/17 11:59:03 by sbonnefo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,27 +32,32 @@ int	ft_putkeynbr(int keycode, t_mlx *param)
 	}
 	if (keycode == 78)
 	{
+		/*param->pers->x--;
 		param->pers->yx--;
-		param->pers->x--;
+		param->pers->zx--;
 		param->pers->y--;
+		param->pers->xy--;*/
 		param->pers->zy--;
+		param->pers->zoom--;
 		ft_redraw(param);
 	}
 	if (keycode == 69)
 	{
-		param->pers->yx++;
+		/*
 		param->pers->x++;
+		param->pers->yx++;
+		param->pers->zx++;
 		param->pers->y++;
+		param->pers->xy++;*/
 		param->pers->zy++;
+		param->pers->zoom++;
 		ft_redraw(param);
 	}
 	if (keycode == 123)
 	{
-		param->pers->yx--;
-		if (param->pers->yx < 0)
-			param->pers->x = param->pers->x++;
-		else
-			param->pers->x = param->pers->x--;
+		param->pers->x++;
+		param->pers->y--;
+		param->pers->xy--;
 		ft_redraw(param);
 	}
 	if (keycode == 125)
@@ -67,18 +72,19 @@ int	ft_putkeynbr(int keycode, t_mlx *param)
 	}
 	if (keycode == 124)
 	{
-		param->pers->yx++;
-		if (param->pers->yx < 0)
-			param->pers->x = param->pers->x++;
-		else
-			param->pers->x = param->pers->x--;
+		param->pers->x--;
+		param->pers->y++;
+		param->pers->xy++;
 		ft_redraw(param);
 	}
 	if (keycode == 82)
 	{
+		param->pers->zoom = 1;
 		param->pers->x = 1;
 		param->pers->yx = 1;
+		param->pers->zx = 0;
 		param->pers->y = 1;
+		param->pers->xy = 0;
 		param->pers->zy = 1;
 		ft_redraw(param);
 	}
