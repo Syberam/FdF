@@ -6,63 +6,65 @@
 /*   By: sbonnefo <sbonnefo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/17 16:37:23 by sbonnefo          #+#    #+#             */
-/*   Updated: 2017/03/17 16:37:25 by sbonnefo         ###   ########.fr       */
+/*   Updated: 2017/03/17 19:07:16 by sbonnefo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "src/fdf.h"
 
+typedef struct	s_lparam
+{
+	int			cumul;
+	int			dx;
+	int			dy;
+	int			xi;
+	int			yi;
+	int			x;
+	int			y;
+	int			i;
+}				t_lp;
+
+void	ft_do_line(t_peak *start, t_lp par, char *data, int dir)
+{
+	par.i = 0;
+	par.x = (dir == 1) ? start->xx : start->yy;
+	par.y = (dir == 1) ? start->yy : start->xx;
+	par.xi = (par.dx > 0) ? 1 : -1;
+	par.yi = (par.dy > 0) ? 1 : -1;
+	par.dx = abs(par.dx);
+	par.dy = abs(par.dy);
+	par.cumul = par.dx / 2;
+	while (++par.i <= par.dx)
+	{
+		par.x += par.xi;
+		par.cumul += par.dy;
+		if (par.cumul >= par.dx)
+		{
+			par.cumul -= par.dx;
+			par.y += par.yi;
+		}
+		if (dir == 1)
+			data[4 * (par.y * start->w + par.x) + 2] = 0xFF;
+		else
+			data[4 * (par.x * start->w + par.y) + 2] = 0xFF;
+	}
+}
+
 void	ft_line_al(t_peak *start, t_peak *end, char *data)
 {
-	int	dx;
-	int	dy;
-	int	cumul;
-	int	x;
-	int	y;
-	int	xi;
-	int	yi;
-	int	i;
+	t_lp	par;
+	int		swp;
 
-	i = 1;
-	x = start->xx;
-	y = start->yy;
-	dx = end->xx - x;
-	dy = end->yy - y;
-	xi = (dx > 0) ? 1 : -1;
-	yi = (dy > 0) ? 1 : -1;
-	data[4 * (y * start->w + x) + 2] = 0xFF;
-	dx = abs(dx);
-	dy = abs(dy);
-	if (dx > dy)
-	{
-		cumul = dx / 2;
-		while (i <= dx)
-		{
-			x += xi;
-			cumul += dy;
-			if (cumul >= dx)
-			{
-				cumul -= dx;
-				y += yi;
-			}
-			i++;
-			data[4 * (y * start->w + x) + 2] = 0xFF;
-		}
-	}
+	par.dx = end->xx - start->xx;
+	par.dy = end->yy - start->yy;
+	data[(int)(4 * (start->yy * start->w + start->xx)) + 2] = 0xFF;
+	if (abs(par.dx) > abs(par.dy))
+		ft_do_line(start, par, data, 1);
 	else
 	{
-		cumul = dy / 2;
-		while (i <= dy)
-		{
-			y += yi;
-			cumul += dx;
-			if (cumul >= dy)
-			{
-				cumul -= dy;
-				x += xi;
-			}
-			data[4 * (y * start->w + x) + 2] = 0xFF;
-			i++;
-		}		
+		swp = par.dx;
+		par.dx = par.dy;
+		par.dy = swp;
+		ft_do_line(start, par, data, 2);
 	}
 }
