@@ -24,14 +24,14 @@ int		main(int argc, char **argv)
 	t_pers	*pers;
 	void	*image;
 
+	if (argc != 2)
+		return (0);
 	param = (t_mlx *)ft_memalloc(sizeof(t_mlx));
 	param->imgs = (t_fdfi *)ft_memalloc(sizeof(t_fdfi));
 	param->imgs->img = (void *)ft_memalloc(sizeof(void));
 	param->imgs->start = (t_peak *)ft_memalloc(sizeof(t_peak));
 	param->mlx = mlx_init();
 	param->win = mlx_new_window(param->mlx, 1800, 1200, "segment");
-	if (argc == 0)
-		return (0);
 	pers = ft_pers_init(param);
 	start = ft_stock_peaks(argv[1]);
 	ft_peaks_to_plan(start, pers);
@@ -41,7 +41,8 @@ int		main(int argc, char **argv)
 	param->imgs->img = image;
 	param->imgs->start = start;
 	mlx_do_key_autorepeaton(param->mlx);
-	mlx_key_hook(param->win, ft_putkeynbr, param);
+	/*mlx_key_hook(param->win, ft_putkeynbr, param);*/
+	mlx_hook(param->win, 2, 3, ft_putkeynbr, param);
 	mlx_loop(param->mlx);
 	return (0);
 }
