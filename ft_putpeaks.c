@@ -6,11 +6,11 @@
 /*   By: sbonnefo <sbonnefo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/01 10:17:44 by sbonnefo          #+#    #+#             */
-/*   Updated: 2017/03/23 22:22:04 by sbonnefo         ###   ########.fr       */
+/*   Updated: 2017/03/23 22:34:33 by sbonnefo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "src/fdf.h"
+#inude "src/fdf.h"
 
 void		*ft_putpeaks(t_peak *peak, t_mlx *param)
 {
