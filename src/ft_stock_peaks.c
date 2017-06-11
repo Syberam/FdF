@@ -19,7 +19,7 @@ static void		ft_stock_values(t_peak *cur, int val[3], char **p)
 	cur->x = val[1];
 	cur->col = ft_strchr(p[val[1]], 'x') ?
 		ft_atoi_base(ft_strchr(p[val[1]], 'x') + 1, 16)
-		: 0xFFFFFF - (0xFFFFFF & (0x000F0F * (int)cur->z));
+		: 0xFFFFFF - (0x001F1F * (int)cur->z);
 }
 
 static t_peak	*ft_newpeak(t_peak *before)
