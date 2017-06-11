@@ -12,12 +12,12 @@
 
 #include "include/fdf.h"
 
-static void	ft_pix_to_img(int x, int y, t_peak *start, char *data, int col)
+static void	ft_pix_to_img(int x, int y, t_peak *start, char *data)
 {
-	data[4 * (y * start->w + x) + 0] = col >> 0;
-	data[4 * (y * start->w + x) + 1] = col >> 8;
-	data[4 * (y * start->w + x) + 2] = col >> 16;
-	data[4 * (y * start->w + x) + 3] = col >> 24;
+	data[4 * (y * start->w + x) + 0] = start->col >> 0;
+	data[4 * (y * start->w + x) + 1] = start->col >> 8;
+	data[4 * (y * start->w + x) + 2] = start->col >> 16;
+	data[4 * (y * start->w + x) + 3] = start->col >> 24;
 }
 
 static void	ft_peaks_to_img(char *data, t_peak *start, int col)
@@ -30,6 +30,8 @@ static void	ft_peaks_to_img(char *data, t_peak *start, int col)
 
 static void	ft_do_line(t_peak *start, t_lp par, char *data, int dir)
 {
+	int		val[2];
+
 	par.i = 0;
 	par.x = (dir == 1) ? start->xx : start->yy;
 	par.y = (dir == 1) ? start->yy : start->xx;
@@ -49,10 +51,12 @@ static void	ft_do_line(t_peak *start, t_lp par, char *data, int dir)
 		}
 		if ((dir == 1) && (par.y * start->w + par.x <= start->w * start->h)
 				&& par.x > -1 && par.y >= 0)
-			ft_pix_to_img(par.x, par.y, start, data, 0xFF00000);
+			val[0] = par.x;
+
+			ft_pix_to_img(par.x, par.y, start, data);
 		else if (dir == 2 && (par.x * start->w + par.y <= start->w * start->h)
 				&& par.x >= 0 && par.y >= 0)
-			ft_pix_to_img(par.y, par.x, start, data, 0xFF0000);
+		ft_pix_to_img(par.y, par.x, start, data);
 	}
 }
 
@@ -61,9 +65,10 @@ void		ft_line_al(t_peak *start, t_peak *end, char *data)
 	t_lp	par;
 	int		swp;
 
-	ft_peaks_to_img(data, end, start->col);
+	ft_peaks_to_img(data, end, end->col);
 	par.dx = end->xx - start->xx;
 	par.dy = end->yy - start->yy;
+	par.col = start_col + ((start->col - end->col) / 2);
 	if (abs(par.dx) > abs(par.dy))
 		ft_do_line(start, par, data, 1);
 	else

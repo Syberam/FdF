@@ -12,10 +12,25 @@
 
 NAME = fdf
 
-SRC_PATH = src
-OBJ_PATH = obj
-LIB_PATH = src/libft
-MLX_PATH = src/mlx
+OS = Elcapitan
+PAD = On
+
+SRC_PATH = ./src
+OBJ_PATH = ./obj
+LIB_PATH = ./src/libft
+SCRIPT_PATH = ./src/scripts
+
+ifeq ($(OS), Elcapitan)
+	MLX_PATH = ./src/mlxelcapitan
+else
+	MLX_PATH = ./src/mlxsierra
+endif
+
+ifeq ($(PAD), On)
+	SCRIPT = $(addprefix $(SCRIPT_PATH)/, pad.sh)
+else
+	SCRIPT = $(addprefix $(SCRIPT_PATH)/, nopad.sh)
+endif
 
 SRC =	$(addprefix $(SRC_PATH)/, main.c \
 		ft_errors.c \
@@ -35,7 +50,7 @@ SRC =	$(addprefix $(SRC_PATH)/, main.c \
 
 OBJ = $(SRC:$(SRC_PATH)/%.c=$(OBJ_PATH)/%.o)
 
-INCLUDES = src/include src/libft src/mlx/mlx.h
+INCLUDES = ./src/include ./src/libft
 
 LIB = $(LIB_PATH)/libft.a
 
@@ -47,21 +62,29 @@ MLX_INC = -framework OpenGL -framework AppKit
 
 all: $(NAME)
 
-$(NAME): $(LIB) $(LIB_MLX) $(OBJ)
+$(NAME): $(LIB) $(OBJ) $(LIB_MLX)
 	@gcc $(FLAGS) $(MLX_INC) -o $(NAME) $(LIB) $(LIB_MLX) $(OBJ)
 	@echo "$(NAME) \033[30;42mmade\033[0m"
-
-$(LIB):
-	@make -C $(LIB_PATH)
+	@echo $(OS)
 
 $(LIB_MLX):
 	@make -C $(MLX_PATH)
 
-$(OBJ_PATH)/%.o: $(SRC_PATH)/%.c $(INCLUDES)
-	@gcc $(FLAGS) -o $@ -c $< $(addprefix -I , $(INCLUDES))
+fclean: clean
+	@rm -Rf $(NAME)
+	@make fclean -C $(LIB_PATH)
+	@make clean -C $(MLX_PATH)
+	@echo "$(NAME) \t\033[30;42m Delete\033[0m\033[0m (make $@ done for $(NAME))"
 
 debug:
 	@gcc -g $(FLAGS) $(MLX_INC) -o $(NAME) $(LIB) $(LIB_MLX) $(OBJ)
+
+$(LIB):
+	@./$(SCRIPT)
+	@make -C $(LIB_PATH)
+
+$(OBJ_PATH)/%.o: $(SRC_PATH)/%.c $(INCLUDES)
+	@gcc $(FLAGS) -o $@ -c $< $(addprefix -I , $(INCLUDES))
 
 norm:
 	norminette src/libft src/include
@@ -70,11 +93,5 @@ norm:
 clean:
 	@rm -Rf $(OBJ)
 	@make clean -C $(LIB_PATH)
-
-fclean: clean
-	@rm -Rf $(NAME)
-	@make fclean -C $(LIB_PATH)
-	@make clean -C $(MLX_PATH)
-	@echo "$(NAME) \t\033[30;42m Delete\033[0m\033[0m (make $@ done for $(NAME))"
 
 re: fclean all

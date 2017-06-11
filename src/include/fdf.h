@@ -14,9 +14,10 @@
 # define FDF_H
 
 # include "../libft/libft.h"
-# include "../mlx/mlx.h"
+# include "mlx.h"
 # include <fcntl.h>
 # include <math.h>
+# include "fdf_keys.h"
 
 typedef struct			s_peak
 {
@@ -74,6 +75,7 @@ typedef struct			s_lpar
 	int					x;
 	int					y;
 	int					i;
+	int					col;
 }						t_lp;
 
 typedef struct			s_img_par

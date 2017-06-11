@@ -14,12 +14,12 @@
 
 void	ft_rotate_z(int keycode, t_mlx *param)
 {
-	if (keycode == 123)
+	if (keycode == KEY_ROT_R)
 		param->pers->xy--;
-	if (keycode == 125)
+	if (keycode == KEY_ROT_D)
 		param->pers->y--;
-	if (keycode == 126)
+	if (keycode == KEY_ROT_L)
 		param->pers->y++;
-	if (keycode == 124)
+	if (keycode == KEY_ROT_U)
 		param->pers->xy++;
 }

@@ -26,7 +26,7 @@ void			ft_redraw(t_mlx *param)
 
 static int		ft_putkeynbr_iv(int keycode, t_mlx *param, int x, int y)
 {
-	if (keycode == 87)
+	if (keycode == KEY_C)
 	{
 		x = 130;
 		while (++x < 160)
@@ -48,7 +48,7 @@ static int		ft_putkeynbr_iv(int keycode, t_mlx *param, int x, int y)
 
 static int		ft_putkeynbr_iii(int keycode, t_mlx *param, int x, int y)
 {
-	if (keycode == 84)
+	if (keycode == KEY_DOWN)
 	{
 		ft_move(keycode, param);
 		x = 130;
@@ -59,7 +59,7 @@ static int		ft_putkeynbr_iii(int keycode, t_mlx *param, int x, int y)
 				mlx_pixel_put(param->mlx, param->win, x, y, 0x00FF00AA);
 		}
 	}
-	if (keycode == 91)
+	if (keycode == KEY_UP)
 	{
 		ft_move(keycode, param);
 		x = 130;
@@ -75,9 +75,9 @@ static int		ft_putkeynbr_iii(int keycode, t_mlx *param, int x, int y)
 
 static int		ft_putkeynbr_ii(int keycode, t_mlx *param, int x, int y)
 {
-	if (keycode == 82)
+	if (keycode == KEY_RINIT)
 		ft_pers_init(param);
-	if (keycode == 86)
+	if (keycode == KEY_L)
 	{
 		x = 97;
 		while (++x < 130)
@@ -87,7 +87,7 @@ static int		ft_putkeynbr_ii(int keycode, t_mlx *param, int x, int y)
 				mlx_pixel_put(param->mlx, param->win, x, y, 0x00FF00AA);
 		}
 	}
-	if (keycode == 88)
+	if (keycode == KEY_R)
 	{
 		x = 160;
 		while (++x < 195)
@@ -108,22 +108,22 @@ int				ft_putkeynbr(int keycode, t_mlx *param)
 	x = 0;
 	y = 0;
 	mlx_do_key_autorepeaton(param->mlx);
-	if (keycode == 75)
+	if (keycode == KEY_HUP)
 		param->pers->zy *= (param->imgs->start->w * 0.6 < 10000) ? 0.6 : 1;
-	if (keycode == 67)
+	if (keycode == KEY_HDO)
 		param->pers->zy *= (param->imgs->start->w * 1.4 < 10000) ? 1.4 : 1;
-	if (keycode == 81)
+	if (keycode == KEY_HINIT)
 		param->pers->zy = 1;
-	if (keycode == 53)
+	if (keycode == KEY_ESC)
 	{
 		mlx_destroy_image(param->mlx, param->imgs->img);
 		mlx_destroy_window(param->mlx, param->win);
 		exit(0);
 	}
-	if (keycode == 78)
+	if (keycode == KEY_ZM)
 		param->pers->zoom *= (param->imgs->start->w * 0.8 > 50
 							&& param->imgs->start->h * 0.8 > 50) ? 0.6 : 1;
-	if (keycode == 69)
+	if (keycode == KEY_ZP)
 		param->pers->zoom *= (param->imgs->start->w * 1.2 < 15000
 							&& param->imgs->start->h * 1.2 < 15000) ? 1.4 : 1;
 	return (ft_putkeynbr_ii(keycode, param, x, y));

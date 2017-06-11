@@ -25,6 +25,7 @@ SRC = ft_itoa.c \
 		ft_strmapi.c \
 		ft_strstr.c \
 		ft_atoi.c \
+		ft_atoi_base.c \
 		ft_lstdel.c \
 		ft_memcmp.c \
 		ft_putnbr.c \

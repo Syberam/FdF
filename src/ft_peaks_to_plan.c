@@ -12,10 +12,10 @@
 
 #include "include/fdf.h"
 
-static void	ft_put_col(t_peak *peak)
-{
-	peak->col = 0x000000 + peak->z;
-}
+//static void	ft_put_col(t_peak *peak)
+//{
+//	peak->col = (!peak->col) ?  0x000000 + peak->z : peak->col;
+//}
 
 static void	ft_img_size(t_peak *peak)
 {
@@ -41,7 +41,7 @@ static void	ft_img_size(t_peak *peak)
 		current->h = h + 1;
 		current = current->next;
 	}
-	ft_put_col(peak);
+	//ft_put_col(peak);
 }
 
 void		ft_keep_good_img_size(t_peak *peak, t_peak *start)

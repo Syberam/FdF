@@ -63,9 +63,9 @@ void		ft_menu(t_mlx *param)
 	ft_menu_frame(param);
 	mlx_string_put(param->mlx, param->win, 20, 10, 0x99FFFFFF, "MENU (m)");
 	mlx_string_put(param->mlx, param->win, 20, 70, 0x00FFFFFF, "Move : ");
-	mlx_string_put(param->mlx, param->win, 100, 40, 0x00FFFFFF, " 7  8  9");
-	mlx_string_put(param->mlx, param->win, 100, 70, 0x00FFFFFF, " 4  5  6");
-	mlx_string_put(param->mlx, param->win, 100, 100, 0x00FFFFFF, " 1  2  3");
+	mlx_string_put(param->mlx, param->win, 100, 40, 0x00FFFFFF, " Q  W  E");
+	mlx_string_put(param->mlx, param->win, 100, 70, 0x00FFFFFF, " A  S  D");
+	mlx_string_put(param->mlx, param->win, 100, 100, 0x00FFFFFF, " Z  X  C");
 	mlx_string_put(param->mlx, param->win, 205, 40, 0x00FFFFFF, " \\  ^  /");
 	mlx_string_put(param->mlx, param->win, 205, 70, 0x00FFFFFF, " <- o ->");
 	mlx_string_put(param->mlx, param->win, 205, 100, 0x00FFFFFF, " /  v  \\");

@@ -14,7 +14,7 @@
 
 static int		ft_keymenu_v(int keycode, t_mlx *param, int x, int y)
 {
-	if (keycode == 87)
+	if (keycode == KEY_C)
 	{
 		x = 130;
 		while (++x < 160)
@@ -30,7 +30,7 @@ static int		ft_keymenu_v(int keycode, t_mlx *param, int x, int y)
 
 static int		ft_keymenu_iv(int keycode, t_mlx *param, int x, int y)
 {
-	if (keycode == 91)
+	if (keycode == KEY_UP)
 	{
 		x = 130;
 		while (++x < 160)
@@ -40,7 +40,7 @@ static int		ft_keymenu_iv(int keycode, t_mlx *param, int x, int y)
 				mlx_pixel_put(param->mlx, param->win, x, y, 0x00000000);
 		}
 	}
-	if (keycode == 85)
+	if (keycode == KEY_DR)
 	{
 		x = 160;
 		while (++x < 195)
@@ -55,7 +55,7 @@ static int		ft_keymenu_iv(int keycode, t_mlx *param, int x, int y)
 
 static int		ft_keymenu_iii(int keycode, t_mlx *param, int x, int y)
 {
-	if (keycode == 89)
+	if (keycode == KEY_UPL)
 	{
 		x = 97;
 		while (++x < 130)
@@ -65,7 +65,7 @@ static int		ft_keymenu_iii(int keycode, t_mlx *param, int x, int y)
 				mlx_pixel_put(param->mlx, param->win, x, y, 0x00000000);
 		}
 	}
-	if (keycode == 92)
+	if (keycode == KEY_UPR)
 	{
 		x = 160;
 		while (++x < 195)
@@ -80,7 +80,7 @@ static int		ft_keymenu_iii(int keycode, t_mlx *param, int x, int y)
 
 static int		ft_keymenu_ii(int keycode, t_mlx *param, int x, int y)
 {
-	if (keycode == 83)
+	if (keycode == KEY_DL)
 	{
 		x = 97;
 		while (++x < 130)
@@ -90,7 +90,7 @@ static int		ft_keymenu_ii(int keycode, t_mlx *param, int x, int y)
 				mlx_pixel_put(param->mlx, param->win, x, y, 0x00000000);
 		}
 	}
-	if (keycode == 84)
+	if (keycode == KEY_DOWN)
 	{
 		x = 130;
 		while (++x < 160)
@@ -108,7 +108,9 @@ int				ft_keymenu(int keycode, t_mlx *param)
 	int x;
 	int	y;
 
-	if (keycode == 86)
+ft_putnbr(keycode);
+ft_putchar('\n');
+	if (keycode == KEY_L)
 	{
 		x = 97;
 		while (++x < 130)
@@ -118,7 +120,7 @@ int				ft_keymenu(int keycode, t_mlx *param)
 				mlx_pixel_put(param->mlx, param->win, x, y, 0x00000000);
 		}
 	}
-	if (keycode == 88)
+	if (keycode == KEY_R)
 	{
 		x = 160;
 		while (++x < 195)

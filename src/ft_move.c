@@ -14,15 +14,15 @@
 
 void	ft_move(int keycode, t_mlx *param)
 {
-	if (keycode == 86 || keycode == 89 || keycode == 83)
+	if (keycode == KEY_L || keycode == KEY_UPL || keycode == KEY_DL)
 		param->pers->pozx -= 30;
-	if (keycode == 88 || keycode == 85 || keycode == 92)
+	if (keycode == KEY_R || keycode == KEY_UPR || keycode == KEY_DR)
 		param->pers->pozx += 30;
-	if (keycode == 84 || keycode == 85 || keycode == 83)
+	if (keycode == KEY_DOWN || keycode == KEY_DR || keycode == KEY_DL)
 		param->pers->pozy += 30;
-	if (keycode == 91 || keycode == 89 || keycode == 92)
+	if (keycode == KEY_UP || keycode == KEY_UPL || keycode == KEY_UPR)
 		param->pers->pozy -= 30;
-	if (keycode == 87)
+	if (keycode == KEY_C)
 	{
 		param->pers->pozx = 0;
 		param->pers->pozy = 0;

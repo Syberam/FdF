@@ -14,16 +14,18 @@
 
 void	ft_rotate_x(int keycode, t_mlx *param)
 {
-	if (keycode == 116)
+	if (keycode == KEY_ZPP_U)
 	{
 		param->pers->x--;
 		param->pers->yx++;
 		param->pers->xy--;
+		param->pers->zx--;
 	}
-	if (keycode == 121)
+	if (keycode == KEY_ZPP_D)
 	{
 		param->pers->x++;
 		param->pers->yx--;
 		param->pers->xy++;
+		param->pers->zx++;
 	}
 }

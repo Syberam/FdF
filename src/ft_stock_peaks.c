@@ -12,6 +12,16 @@
 
 #include "include/fdf.h"
 
+static void		ft_stock_values(t_peak *cur, int val[3], char **p)
+{
+	cur->z = ft_atoi(p[val[1]]);
+	cur->y = val[2];
+	cur->x = val[1];
+	cur->col = ft_strchr(p[val[1]], 'x') ?
+		ft_atoi_base(ft_strchr(p[val[1]], 'x') + 1, 16)
+		: 0xFFFFFF - (0xFFFFFF & (0x000F0F * (int)cur->z));
+}
+
 static t_peak	*ft_newpeak(t_peak *before)
 {
 	t_peak	*new;
@@ -39,9 +49,7 @@ t_peak			*ft_stock_peaks(t_peak *start, char *path)
 		p = ft_strsplit(line, ' ');
 		while (p[++val[1]])
 		{
-			cur->z = ft_atoi(p[val[1]]);
-			cur->y = val[2];
-			cur->x = val[1];
+			ft_stock_values(cur, val, p);
 			cur = ft_newpeak(cur);
 		}
 		val[2]++;
