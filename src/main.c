@@ -6,7 +6,7 @@
 /*   By: sbonnefo <sbonnefo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/08 15:36:04 by sbonnefo          #+#    #+#             */
-/*   Updated: 2017/06/09 00:00:14 by sbonnefo         ###   ########.fr       */
+/*   Updated: 2017/06/12 03:55:35 by sbonnefo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,17 +24,17 @@ int		main(int argc, char **argv)
 	if (!(start = ft_parsing_file(argv)))
 		return (0);
 	param = ft_init_mymlx();
-	start = ft_stock_peaks(start, argv[1]);
+	start = ft_stock_peaks(start, argv[1], param);
 	pers = ft_pers_init(param);
 	ft_peaks_to_plan(start, pers);
 	current = start;
-	param->imgs->img = ft_putpeaks(start, param, argv[1]);
-	param->imgs->start = start;
+	param->img = ft_putpeaks(start, param, argv[1]);
+	param->start = start;
 	param->win = mlx_new_window(param->mlx, 1800, 1200, argv[1]);
 	mlx_hook(param->win, 2, 3, ft_putkeynbr, param);
 	mlx_hook(param->win, 3, 3, ft_keymenu, param);
-	mlx_put_image_to_window(param->mlx, param->win, param->imgs->img,
-	((1800 - param->imgs->start->w) / 2), ((1200 - param->imgs->start->h) / 2));
+	mlx_put_image_to_window(param->mlx, param->win, param->img,
+	((1800 - param->start->w) / 2), ((1200 - param->start->h) / 2));
 	ft_menu(param);
 	mlx_loop(param->mlx);
 	return (0);

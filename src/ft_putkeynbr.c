@@ -6,7 +6,7 @@
 /*   By: sbonnefo <sbonnefo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/14 16:22:44 by sbonnefo          #+#    #+#             */
-/*   Updated: 2017/06/09 01:00:15 by sbonnefo         ###   ########.fr       */
+/*   Updated: 2017/06/12 03:49:09 by sbonnefo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,10 @@ void			ft_redraw(t_mlx *param)
 	char		*data;
 
 	data = NULL;
-	mlx_destroy_image(param->mlx, param->imgs->img);
+	mlx_destroy_image(param->mlx, param->img);
 	mlx_clear_window(param->mlx, param->win);
-	ft_peaks_to_plan(param->imgs->start, param->pers);
-	param->imgs->img = ft_putpeaks(param->imgs->start, param, data);
+	ft_peaks_to_plan(param->start, param->pers);
+	param->img = ft_putpeaks(param->start, param, data);
 	ft_menu(param);
 }
 
@@ -39,9 +39,9 @@ static int		ft_putkeynbr_iv(int keycode, t_mlx *param, int x, int y)
 	ft_rotate_z(keycode, param);
 	ft_rotate_x(keycode, param);
 	ft_redraw(param);
-	mlx_put_image_to_window(param->mlx, param->win, param->imgs->img,
-				((1800 - param->imgs->start->w) / 2 + param->pers->pozx),
-				((1200 - param->imgs->start->h) / 2 + param->pers->pozy));
+	mlx_put_image_to_window(param->mlx, param->win, param->img,
+				((1800 - param->start->w) / 2 + param->pers->pozx),
+				((1200 - param->start->h) / 2 + param->pers->pozy));
 	ft_move(keycode, param);
 	return (keycode);
 }
@@ -109,22 +109,22 @@ int				ft_putkeynbr(int keycode, t_mlx *param)
 	y = 0;
 	mlx_do_key_autorepeaton(param->mlx);
 	if (keycode == KEY_HUP)
-		param->pers->zy *= (param->imgs->start->w * 0.6 < 10000) ? 0.6 : 1;
+		param->pers->zy *= (param->start->w * 0.6 < 10000) ? 0.6 : 1;
 	if (keycode == KEY_HDO)
-		param->pers->zy *= (param->imgs->start->w * 1.4 < 10000) ? 1.4 : 1;
+		param->pers->zy *= (param->start->w * 1.4 < 10000) ? 1.4 : 1;
 	if (keycode == KEY_HINIT)
 		param->pers->zy = 1;
 	if (keycode == KEY_ESC)
 	{
-		mlx_destroy_image(param->mlx, param->imgs->img);
+		mlx_destroy_image(param->mlx, param->img);
 		mlx_destroy_window(param->mlx, param->win);
 		exit(0);
 	}
 	if (keycode == KEY_ZM)
-		param->pers->zoom *= (param->imgs->start->w * 0.8 > 50
-							&& param->imgs->start->h * 0.8 > 50) ? 0.6 : 1;
+		param->pers->zoom *= (param->start->w * 0.8 > 50
+							&& param->start->h * 0.8 > 50) ? 0.6 : 1;
 	if (keycode == KEY_ZP)
-		param->pers->zoom *= (param->imgs->start->w * 1.2 < 15000
-							&& param->imgs->start->h * 1.2 < 15000) ? 1.4 : 1;
+		param->pers->zoom *= (param->start->w * 1.2 < 15000
+							&& param->start->h * 1.2 < 15000) ? 1.4 : 1;
 	return (ft_putkeynbr_ii(keycode, param, x, y));
 }

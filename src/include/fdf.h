@@ -6,7 +6,7 @@
 /*   By: sbonnefo <sbonnefo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/17 18:30:34 by sbonnefo          #+#    #+#             */
-/*   Updated: 2017/06/09 01:03:12 by sbonnefo         ###   ########.fr       */
+/*   Updated: 2017/06/12 04:28:29 by sbonnefo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,9 @@
 
 typedef struct			s_peak
 {
-	float				x;
-	float				y;
-	float				z;
+	int					x;
+	int					y;
+	int					z;
 	float				xx;
 	float				yy;
 	int					w;
@@ -45,21 +45,18 @@ typedef struct			s_pers
 	float				pozy;
 }						t_pers;
 
-typedef struct			s_fdf_img
-{
-	void				*img;
-	t_peak				*start;
-	struct s_fdf_img	*next;
-}						t_fdfi;
-
 typedef	struct			s_mlx
 {
 	void				*content;
 	void				*win;
 	void				*mlx;
-	int					img_x;
-	int					img_y;
-	t_fdfi				*imgs;
+	void				*img;
+	int					total_z;
+	int					nb_peaks;
+	int					max_x;
+	int					max_y;
+	int					max_z;
+	t_peak				*start;
 	t_pers				*pers;
 	size_t				content_size;
 	struct s_mlx		*next;
@@ -91,7 +88,8 @@ typedef struct			s_img_par
 
 t_mlx					*ft_init_mymlx(void);
 t_peak					*ft_parsing_file(char **path);
-t_peak					*ft_stock_peaks(t_peak *start, char *path);
+t_peak					*ft_stock_peaks(t_peak *start, char *path,
+											t_mlx *param);
 t_pers					*ft_pers_init(t_mlx *param);
 void					ft_peaks_to_plan(t_peak *peak, t_pers *pers);
 

@@ -6,7 +6,7 @@
 /*   By: sbonnefo <sbonnefo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/17 18:30:34 by sbonnefo          #+#    #+#             */
-/*   Updated: 2017/06/09 01:03:12 by sbonnefo         ###   ########.fr       */
+/*   Updated: 2017/06/12 01:04:52 by sbonnefo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,14 +23,14 @@
 # define KEY_DL		83
 # define KEY_DR		85
 # define KEY_DOWN	84
-# define KEY_ROT_R	124
-# define KEY_ROT_L	123
+# define KEY_ROT_R	123
+# define KEY_ROT_L	126
 # define KEY_ROT_D	125
-# define KEY_ROT_U	126
+# define KEY_ROT_U	124
 # define KEY_ZP		69
 # define KEY_ZM		78
-# define KEY_ZPP_U	47
-# define KEY_ZPP_D	43
+# define KEY_ZPP_U	121
+# define KEY_ZPP_D	116
 # define KEY_HUP	75
 # define KEY_HDO	67
 # define KEY_HINIT	81
