@@ -6,7 +6,7 @@
 /*   By: sbonnefo <sbonnefo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/23 21:00:47 by sbonnefo          #+#    #+#             */
-/*   Updated: 2017/06/09 00:55:29 by sbonnefo         ###   ########.fr       */
+/*   Updated: 2017/06/13 01:42:27 by sbonnefo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,8 +108,6 @@ int				ft_keymenu(int keycode, t_mlx *param)
 	int x;
 	int	y;
 
-ft_putnbr(keycode);
-ft_putchar('\n');
 	if (keycode == KEY_L)
 	{
 		x = 97;

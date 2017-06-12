@@ -6,7 +6,7 @@
 /*   By: sbonnefo <sbonnefo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/17 18:30:34 by sbonnefo          #+#    #+#             */
-/*   Updated: 2017/06/12 04:28:29 by sbonnefo         ###   ########.fr       */
+/*   Updated: 2017/06/12 20:43:27 by sbonnefo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,6 @@ typedef struct			s_peak
 	int					z;
 	float				xx;
 	float				yy;
-	int					w;
-	int					h;
 	int					col;
 	struct s_peak		*next;
 }						t_peak;
@@ -56,6 +54,8 @@ typedef	struct			s_mlx
 	int					max_x;
 	int					max_y;
 	int					max_z;
+	int					w;
+	int					h;
 	t_peak				*start;
 	t_pers				*pers;
 	size_t				content_size;
@@ -71,6 +71,8 @@ typedef struct			s_lpar
 	int					yi;
 	int					x;
 	int					y;
+	int					w;
+	int					h;
 	int					i;
 	int					col;
 }						t_lp;
@@ -91,14 +93,16 @@ t_peak					*ft_parsing_file(char **path);
 t_peak					*ft_stock_peaks(t_peak *start, char *path,
 											t_mlx *param);
 t_pers					*ft_pers_init(t_mlx *param);
-void					ft_peaks_to_plan(t_peak *peak, t_pers *pers);
+void					ft_peaks_to_plan(t_peak *peak, t_pers *pers,
+											t_mlx *param);
 
 /*
 **				DRAWING
 */
 
 void					*ft_putpeaks(t_peak *peak, t_mlx *param, char *data);
-void					ft_line_al(t_peak *start, t_peak *end, char *data);
+void					ft_line_al(t_peak *start, t_peak *end, char *data,
+									t_mlx *param);
 void					ft_line_antal(t_peak *start, t_peak *end, char *param);
 void					ft_redraw(t_mlx *param);
 

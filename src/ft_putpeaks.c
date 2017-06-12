@@ -6,7 +6,7 @@
 /*   By: sbonnefo <sbonnefo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/01 10:17:44 by sbonnefo          #+#    #+#             */
-/*   Updated: 2017/06/12 03:49:42 by sbonnefo         ###   ########.fr       */
+/*   Updated: 2017/06/13 01:41:43 by sbonnefo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,25 +18,22 @@ void		*ft_putpeaks(t_peak *peak, t_mlx *param, char *data)
 	t_img_par	i_p;
 	t_peak		*down;
 
-	img = NULL;
-	if (img)
-		mlx_destroy_image(param->mlx, param->img);
-	img = mlx_new_image(param->mlx, peak->w, peak->h);
+	img = mlx_new_image(param->mlx, param->w * 2, param->h * 2);
 	param->img = img;
-	data = mlx_get_data_addr(img, &i_p.bpp, &i_p.size_line, &i_p.endian);
+	data = mlx_get_data_addr(param->img, &i_p.bpp, &i_p.size_line, &i_p.endian);
 	while (peak)
 	{
 		if (peak->next != NULL && peak->y == (peak->next)->y)
-			ft_line_al(peak, peak->next, data);
+			ft_line_al(peak, peak->next, data, param);
 		if (peak->next)
 		{
 			down = peak->next;
 			while (down->x != peak->x && down->next)
 				down = down->next;
 			if (down->x == peak->x && down->y == peak->y + 1)
-				ft_line_al(peak, down, data);
+				ft_line_al(peak, down, data, param);
 		}
 		peak = peak->next;
 	}
-	return (img);
+	return (param->img);
 }

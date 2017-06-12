@@ -6,7 +6,7 @@
 /*   By: sbonnefo <sbonnefo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/23 13:18:03 by sbonnefo          #+#    #+#             */
-/*   Updated: 2017/06/12 04:57:31 by sbonnefo         ###   ########.fr       */
+/*   Updated: 2017/06/13 01:41:03 by sbonnefo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,7 @@ static void		ft_setcolor(t_mlx *param)
 	while (cur && cur->next)
 	{
 		if (!cur->col)
-		{
 			cur->col = 0xFF0000 - (0x00FFFF * (cur->z - moy));
-		//	cur->col = (cur->z > 10 * moy) ? 0xFF0000 : cur->col;
-		//	cur->col = (cur->z < 10 * moy) ? 0x00FFFF : cur->col;
-		}
 		cur = cur->next;
 	}
 }

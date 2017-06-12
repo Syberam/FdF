@@ -6,13 +6,13 @@
 /*   By: sbonnefo <sbonnefo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/01 12:42:46 by sbonnefo          #+#    #+#             */
-/*   Updated: 2017/06/09 00:24:59 by sbonnefo         ###   ########.fr       */
+/*   Updated: 2017/06/13 00:48:03 by sbonnefo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "include/fdf.h"
 
-static void	ft_img_size(t_peak *peak)
+static void	ft_img_size(t_peak *peak, t_mlx *param)
 {
 	t_peak	*current;
 	int		w;
@@ -29,13 +29,8 @@ static void	ft_img_size(t_peak *peak)
 			h = current->yy;
 		current = current->next;
 	}
-	current = peak;
-	while (current)
-	{
-		current->w = w + 1;
-		current->h = h + 1;
-		current = current->next;
-	}
+	param->w = w;
+	param->h = h;
 }
 
 void		ft_keep_good_img_size(t_peak *peak, t_peak *start)
@@ -62,7 +57,7 @@ void		ft_keep_good_img_size(t_peak *peak, t_peak *start)
 	}
 }
 
-void		ft_peaks_to_plan(t_peak *peak, t_pers *pers)
+void		ft_peaks_to_plan(t_peak *peak, t_pers *pers, t_mlx *param)
 {
 	t_peak	*start;
 
@@ -77,5 +72,5 @@ void		ft_peaks_to_plan(t_peak *peak, t_pers *pers)
 	}
 	peak = start;
 	ft_keep_good_img_size(peak, start);
-	ft_img_size(start);
+	ft_img_size(start, param);
 }
