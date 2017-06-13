@@ -6,7 +6,7 @@
 /*   By: sbonnefo <sbonnefo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/14 16:22:44 by sbonnefo          #+#    #+#             */
-/*   Updated: 2017/06/13 01:25:10 by sbonnefo         ###   ########.fr       */
+/*   Updated: 2017/06/13 16:11:16 by sbonnefo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,11 @@
 
 void			ft_redraw(t_mlx *param)
 {
-	char		*data;
-
-	data = NULL;
-	mlx_destroy_image(param->mlx, param->img);
-	mlx_clear_window(param->mlx, param->win);
+/*	mlx_destroy_image(param->mlx, param->img);
+*/	mlx_clear_window(param->mlx, param->win);
+	param->data = ft_clear_img(param->data);
 	ft_peaks_to_plan(param->start, param->pers, param);
-	param->img = ft_putpeaks(param->start, param, data);
+	param->img = ft_putpeaks(param->start, param);
 	ft_menu(param);
 }
 

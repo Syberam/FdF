@@ -6,7 +6,7 @@
 /*   By: sbonnefo <sbonnefo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/17 18:30:34 by sbonnefo          #+#    #+#             */
-/*   Updated: 2017/06/12 20:43:27 by sbonnefo         ###   ########.fr       */
+/*   Updated: 2017/06/13 15:53:34 by sbonnefo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ typedef	struct			s_mlx
 	void				*win;
 	void				*mlx;
 	void				*img;
+	char				*data;
 	int					total_z;
 	int					nb_peaks;
 	int					max_x;
@@ -100,11 +101,11 @@ void					ft_peaks_to_plan(t_peak *peak, t_pers *pers,
 **				DRAWING
 */
 
-void					*ft_putpeaks(t_peak *peak, t_mlx *param, char *data);
-void					ft_line_al(t_peak *start, t_peak *end, char *data,
-									t_mlx *param);
+void					*ft_putpeaks(t_peak *peak, t_mlx *param);
+void					ft_line_al(t_peak *start, t_peak *end, t_mlx *param);
 void					ft_line_antal(t_peak *start, t_peak *end, char *param);
 void					ft_redraw(t_mlx *param);
+char					*ft_clear_img(char *data);
 
 /*
 **				MENU

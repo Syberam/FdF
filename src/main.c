@@ -6,7 +6,7 @@
 /*   By: sbonnefo <sbonnefo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/08 15:36:04 by sbonnefo          #+#    #+#             */
-/*   Updated: 2017/06/13 01:43:14 by sbonnefo         ###   ########.fr       */
+/*   Updated: 2017/06/13 16:35:20 by sbonnefo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,12 @@ int		main(int argc, char **argv)
 	if (!(start = ft_parsing_file(argv)))
 		return (0);
 	param = ft_init_mymlx();
-	start = ft_stock_peaks(start, argv[1], param);
+	param->start = ft_stock_peaks(start, argv[1], param);
 	pers = ft_pers_init(param);
 	ft_peaks_to_plan(start, pers, param);
 	ft_putchar('\n');
 	current = start;
-	param->img = ft_putpeaks(start, param, argv[1]);
+	param->img = ft_putpeaks(start, param);
 	param->start = start;
 	param->win = mlx_new_window(param->mlx, param->w + 700,
 						param->h + 700, argv[1]);
