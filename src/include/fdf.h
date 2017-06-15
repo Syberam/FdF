@@ -6,7 +6,7 @@
 /*   By: sbonnefo <sbonnefo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/17 18:30:34 by sbonnefo          #+#    #+#             */
-/*   Updated: 2017/06/13 15:53:34 by sbonnefo         ###   ########.fr       */
+/*   Updated: 2017/06/15 03:53:38 by sbonnefo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@
 # include <fcntl.h>
 # include <math.h>
 # include "fdf_keys.h"
+# define WI_W 500
+# define WI_H 600
 
 typedef struct			s_peak
 {
@@ -57,6 +59,7 @@ typedef	struct			s_mlx
 	int					max_z;
 	int					w;
 	int					h;
+	char				erase;
 	t_peak				*start;
 	t_pers				*pers;
 	size_t				content_size;
@@ -89,7 +92,7 @@ typedef struct			s_img_par
 **				DATA MANAGE
 */
 
-t_mlx					*ft_init_mymlx(void);
+t_mlx					*ft_init_mymlx(t_mlx *para);
 t_peak					*ft_parsing_file(char **path);
 t_peak					*ft_stock_peaks(t_peak *start, char *path,
 											t_mlx *param);
@@ -105,7 +108,7 @@ void					*ft_putpeaks(t_peak *peak, t_mlx *param);
 void					ft_line_al(t_peak *start, t_peak *end, t_mlx *param);
 void					ft_line_antal(t_peak *start, t_peak *end, char *param);
 void					ft_redraw(t_mlx *param);
-char					*ft_clear_img(char *data);
+void					ft_clean_menu(t_mlx *param);
 
 /*
 **				MENU

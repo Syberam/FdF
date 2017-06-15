@@ -6,7 +6,7 @@
 /*   By: sbonnefo <sbonnefo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/01 12:42:46 by sbonnefo          #+#    #+#             */
-/*   Updated: 2017/06/13 00:48:03 by sbonnefo         ###   ########.fr       */
+/*   Updated: 2017/06/15 00:55:12 by sbonnefo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,8 @@ static void	ft_img_size(t_peak *peak, t_mlx *param)
 			h = current->yy;
 		current = current->next;
 	}
-	param->w = w;
-	param->h = h;
+	param->w = (!param->w) ? w : param->w;
+	param->h = (!param->h) ? h : param->h;
 }
 
 void		ft_keep_good_img_size(t_peak *peak, t_peak *start)
@@ -64,9 +64,9 @@ void		ft_peaks_to_plan(t_peak *peak, t_pers *pers, t_mlx *param)
 	start = peak;
 	while (peak)
 	{
-		peak->xx = (pers->zoom) * ((peak->x * pers->x)
+		peak->xx = (pers->pozx) + (pers->zoom) * ((peak->x * pers->x)
 					+ (peak->y * pers->yx) + (pers->zx * peak->z));
-		peak->yy = (pers->zoom) * ((peak->y * pers->y)
+		peak->yy = (pers->pozy) + (pers->zoom) * ((peak->y * pers->y)
 					- (pers->zy * peak->z) + (peak->x * pers->xy));
 		peak = peak->next;
 	}

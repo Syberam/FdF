@@ -6,7 +6,7 @@
 /*   By: sbonnefo <sbonnefo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/01 10:17:44 by sbonnefo          #+#    #+#             */
-/*   Updated: 2017/06/13 16:34:33 by sbonnefo         ###   ########.fr       */
+/*   Updated: 2017/06/15 03:38:41 by sbonnefo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,12 +23,13 @@ void		*ft_putpeaks(t_peak *peak, t_mlx *param)
 		if (peak->next)
 		{
 			down = peak->next;
-			while (down->x != peak->x && down->next)
+			while (down && down->x != peak->x && down->next)
 				down = down->next;
-			if (down->x == peak->x && down->y == peak->y + 1)
+			if (down && down->x == peak->x && down->y == peak->y + 1)
 				ft_line_al(peak, down, param);
 		}
 		peak = peak->next;
 	}
+	param->erase = (param->erase) ? 0 : 1;
 	return (param->img);
 }
