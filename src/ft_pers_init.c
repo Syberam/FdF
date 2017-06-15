@@ -6,7 +6,7 @@
 /*   By: sbonnefo <sbonnefo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/23 18:57:03 by sbonnefo          #+#    #+#             */
-/*   Updated: 2017/06/15 19:31:14 by sbonnefo         ###   ########.fr       */
+/*   Updated: 2017/06/15 21:17:47 by sbonnefo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ static int	ft_maxx(t_mlx *param)
 		peak = peak->next;
 	}
 	return (maxx);
-
 }
 
 t_pers		*ft_pers_init(t_mlx *param)

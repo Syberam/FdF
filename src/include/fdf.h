@@ -6,7 +6,7 @@
 /*   By: sbonnefo <sbonnefo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/17 18:30:34 by sbonnefo          #+#    #+#             */
-/*   Updated: 2017/06/15 16:31:26 by sbonnefo         ###   ########.fr       */
+/*   Updated: 2017/06/15 21:00:41 by sbonnefo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,7 @@ typedef	struct			s_mlx
 	int					imw;
 	int					imh;
 	char				erase;
+	char				menu;
 	t_peak				*start;
 	t_pers				*pers;
 	size_t				content_size;

@@ -6,7 +6,7 @@
 /*   By: sbonnefo <sbonnefo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/14 16:22:44 by sbonnefo          #+#    #+#             */
-/*   Updated: 2017/06/15 16:46:26 by sbonnefo         ###   ########.fr       */
+/*   Updated: 2017/06/15 21:25:39 by sbonnefo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void			ft_redraw(t_mlx *param)
 
 static int		ft_putkeynbr_iv(int keycode, t_mlx *param, int x, int y)
 {
-	if (keycode == KEY_C)
+	if (keycode == KEY_C && param->menu)
 	{
 		x = 130;
 		while (++x < 160)
@@ -47,7 +47,7 @@ static int		ft_putkeynbr_iv(int keycode, t_mlx *param, int x, int y)
 
 static int		ft_putkeynbr_iii(int keycode, t_mlx *param, int x, int y)
 {
-	if (keycode == KEY_DOWN)
+	if (keycode == KEY_DOWN && param->menu)
 	{
 		ft_move(keycode, param);
 		x = 130;
@@ -58,7 +58,7 @@ static int		ft_putkeynbr_iii(int keycode, t_mlx *param, int x, int y)
 				mlx_pixel_put(param->mlx, param->win, x, y, 0x00FF00AA);
 		}
 	}
-	if (keycode == KEY_UP)
+	if (keycode == KEY_UP && param->menu)
 	{
 		ft_move(keycode, param);
 		x = 130;
@@ -76,7 +76,7 @@ static int		ft_putkeynbr_ii(int keycode, t_mlx *param, int x, int y)
 {
 	if (keycode == KEY_RINIT)
 		ft_pers_init(param);
-	if (keycode == KEY_L)
+	if (keycode == KEY_L && param->menu)
 	{
 		x = 97;
 		while (++x < 130)
@@ -86,7 +86,7 @@ static int		ft_putkeynbr_ii(int keycode, t_mlx *param, int x, int y)
 				mlx_pixel_put(param->mlx, param->win, x, y, 0x00FF00AA);
 		}
 	}
-	if (keycode == KEY_R)
+	if (keycode == KEY_R && param->menu)
 	{
 		x = 160;
 		while (++x < 195)
@@ -106,25 +106,23 @@ int				ft_putkeynbr(int keycode, t_mlx *param)
 
 	x = 0;
 	y = 0;
+	if (keycode == 46)
+		param->menu = (!param->menu) ? 1 : 0;
 	ft_clean_menu(param);
-	mlx_do_key_autorepeaton(param->mlx);
 	ft_putpeaks(param->start, param);
-	if (keycode == KEY_HUP)
-		param->pers->zy *= 0.6;
-	if (keycode == KEY_HDO)
-		param->pers->zy *= 1.4;
-	if (keycode == KEY_HINIT)
-		param->pers->zy = 1;
+	param->pers->zy *= (keycode == KEY_HUP) ? 0.6 : 1;
+	param->pers->zy *= (keycode == KEY_HOP) ? 1.4 : 1;
+	param->pers->zy = (keycode == KEY_HINIT) ? 1 : param->pers->zy;
 	if (keycode == KEY_ZM)
 	{
 		param->pers->zoom *= 0.6;
-		param->pers->pozx += param->imw / 2;;
+		param->pers->pozx += param->imw / 2;
 		param->pers->pozy += param->imh / 2;
 	}
 	if (keycode == KEY_ZP)
 	{
 		param->pers->zoom *= 1.4;
-		param->pers->pozx -= param->imw / 2;;
+		param->pers->pozx -= param->imw / 2;
 		param->pers->pozy -= param->imh / 2;
 	}
 	return (ft_putkeynbr_ii(keycode, param, x, y));
