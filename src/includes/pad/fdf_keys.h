@@ -6,7 +6,7 @@
 /*   By: sbonnefo <sbonnefo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/17 18:30:34 by sbonnefo          #+#    #+#             */
-/*   Updated: 2017/06/12 18:21:05 by sbonnefo         ###   ########.fr       */
+/*   Updated: 2017/06/15 21:53:34 by sbonnefo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@
 # define KEY_ZP		69
 # define KEY_ZM		78
 # define KEY_ZPP_U	121
-# define KEY_ZPP_D	119
+# define KEY_ZPP_D	116
 # define KEY_HUP	75
 # define KEY_HDO	67
 # define KEY_HINIT	81
