@@ -6,7 +6,7 @@
 /*   By: sbonnefo <sbonnefo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/01 12:42:46 by sbonnefo          #+#    #+#             */
-/*   Updated: 2017/06/15 00:55:12 by sbonnefo         ###   ########.fr       */
+/*   Updated: 2017/06/15 19:26:03 by sbonnefo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,31 +30,11 @@ static void	ft_img_size(t_peak *peak, t_mlx *param)
 		current = current->next;
 	}
 	param->w = (!param->w) ? w : param->w;
+	param->h = (param->h + WI_W + 355 > 2400) ? 2400 - WI_H - 350 : param->h;
 	param->h = (!param->h) ? h : param->h;
-}
-
-void		ft_keep_good_img_size(t_peak *peak, t_peak *start)
-{
-	int		ox;
-	int		oy;
-
-	ox = 0;
-	oy = 0;
-	while (peak)
-	{
-		if (ox > peak->xx)
-			ox = peak->xx;
-		if (oy > peak->yy)
-			oy = peak->yy;
-		peak = peak->next;
-	}
-	peak = start;
-	while (peak)
-	{
-		peak->xx = peak->xx - ox;
-		peak->yy = peak->yy - oy;
-		peak = peak->next;
-	}
+	param->h = (param->h + WI_H > 1300) ? 1300 - WI_H : param->h;
+	param->imw = w - ((WI_W + param->w) / 2);
+	param->imh = h - ((WI_H + param->h) / 2);
 }
 
 void		ft_peaks_to_plan(t_peak *peak, t_pers *pers, t_mlx *param)
@@ -71,6 +51,5 @@ void		ft_peaks_to_plan(t_peak *peak, t_pers *pers, t_mlx *param)
 		peak = peak->next;
 	}
 	peak = start;
-	ft_keep_good_img_size(peak, start);
 	ft_img_size(start, param);
 }

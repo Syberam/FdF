@@ -6,7 +6,7 @@
 /*   By: sbonnefo <sbonnefo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/17 18:30:34 by sbonnefo          #+#    #+#             */
-/*   Updated: 2017/06/15 03:53:38 by sbonnefo         ###   ########.fr       */
+/*   Updated: 2017/06/15 16:31:26 by sbonnefo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,8 @@ typedef	struct			s_mlx
 	int					max_z;
 	int					w;
 	int					h;
+	int					imw;
+	int					imh;
 	char				erase;
 	t_peak				*start;
 	t_pers				*pers;

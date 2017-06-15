@@ -6,7 +6,7 @@
 /*   By: sbonnefo <sbonnefo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/14 16:22:44 by sbonnefo          #+#    #+#             */
-/*   Updated: 2017/06/15 03:52:26 by sbonnefo         ###   ########.fr       */
+/*   Updated: 2017/06/15 16:46:26 by sbonnefo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ static int		ft_putkeynbr_iv(int keycode, t_mlx *param, int x, int y)
 	ft_rotate_z(keycode, param);
 	ft_rotate_x(keycode, param);
 	ft_redraw(param);
-	mlx_put_image_to_window(param->mlx, param->win, param->img, 350, 0);
+	mlx_put_image_to_window(param->mlx, param->win, param->img, 350, 2);
 	ft_move(keycode, param);
 	return (keycode);
 }
@@ -116,8 +116,16 @@ int				ft_putkeynbr(int keycode, t_mlx *param)
 	if (keycode == KEY_HINIT)
 		param->pers->zy = 1;
 	if (keycode == KEY_ZM)
+	{
 		param->pers->zoom *= 0.6;
+		param->pers->pozx += param->imw / 2;;
+		param->pers->pozy += param->imh / 2;
+	}
 	if (keycode == KEY_ZP)
+	{
 		param->pers->zoom *= 1.4;
+		param->pers->pozx -= param->imw / 2;;
+		param->pers->pozy -= param->imh / 2;
+	}
 	return (ft_putkeynbr_ii(keycode, param, x, y));
 }

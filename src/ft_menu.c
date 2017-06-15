@@ -6,11 +6,25 @@
 /*   By: sbonnefo <sbonnefo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/23 19:49:21 by sbonnefo          #+#    #+#             */
-/*   Updated: 2017/06/08 21:35:43 by sbonnefo         ###   ########.fr       */
+/*   Updated: 2017/06/15 19:31:41 by sbonnefo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "include/fdf.h"
+
+void	ft_clean_menu(t_mlx *param)
+{
+	int		x;
+	int		y;
+
+	x = 2;
+	while (++x <= 340)
+	{
+		y = 2;
+		while (++y <= 320)
+				mlx_pixel_put(param->mlx, param->win, x, y, 0x00000000);
+	}
+}
 
 static void	ft_menu_frame(t_mlx *param)
 {
@@ -27,6 +41,10 @@ static void	ft_menu_frame(t_mlx *param)
 				mlx_pixel_put(param->mlx, param->win, x, y, 0x00FFFFFF);
 		}
 	}
+	x += 5;
+	y = 0;
+	while (++y < (WI_H + param->h))
+		mlx_pixel_put(param->mlx, param->win, x, y, 0x00FFFFFF);
 }
 
 static void	ft_pad_grid(t_mlx *param)

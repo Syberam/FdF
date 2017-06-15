@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putkeynbr.c                                     :+:      :+:    :+:   */
+/*   ft_move.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sbonnefo <sbonnefo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/03/14 16:22:44 by sbonnefo          #+#    #+#             */
-/*   Updated: 2017/06/15 01:22:50 by sbonnefo         ###   ########.fr       */
+/*   Created: 2017/06/15 16:39:05 by sbonnefo          #+#    #+#             */
+/*   Updated: 2017/06/15 16:50:48 by sbonnefo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	ft_move(int keycode, t_mlx *param)
 		param->pers->pozy -= 30;
 	if (keycode == KEY_C)
 	{
-		param->pers->pozx = 0;
-		param->pers->pozy = 0;
+		param->pers->pozx = WI_W;
+		param->pers->pozy = WI_H;
 	}
 }
