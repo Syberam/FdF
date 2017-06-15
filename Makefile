@@ -6,7 +6,7 @@
 #    By: sbonnefo <sbonnefo@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/12/10 18:28:41 by sbonnefo          #+#    #+#              #
-#    Updated: 2017/06/15 21:29:44 by sbonnefo         ###   ########.fr        #
+#    Updated: 2017/06/15 21:44:45 by sbonnefo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,8 +36,9 @@ SRC =	$(addprefix $(SRC_PATH)/, main.c \
 		ft_errors.c \
 		ft_keymenu.c \
 		ft_line_al.c \
-		ft_menu.c \
 		ft_move.c \
+		ft_menu.c \
+		ft_submenunav.c \
 		ft_peaks_to_plan.c \
 		ft_pers_init.c \
 		ft_putkeynbr.c \

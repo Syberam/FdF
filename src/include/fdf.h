@@ -6,7 +6,7 @@
 /*   By: sbonnefo <sbonnefo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/17 18:30:34 by sbonnefo          #+#    #+#             */
-/*   Updated: 2017/06/15 21:00:41 by sbonnefo         ###   ########.fr       */
+/*   Updated: 2017/06/15 21:45:06 by sbonnefo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,6 +118,7 @@ void					ft_clean_menu(t_mlx *param);
 */
 
 void					ft_menu(t_mlx *param);
+void					ft_submenunav(t_mlx *param);
 int						ft_keymenu(int keycode, t_mlx *param);
 
 /*

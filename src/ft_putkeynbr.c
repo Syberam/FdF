@@ -6,7 +6,7 @@
 /*   By: sbonnefo <sbonnefo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/14 16:22:44 by sbonnefo          #+#    #+#             */
-/*   Updated: 2017/06/15 21:25:39 by sbonnefo         ###   ########.fr       */
+/*   Updated: 2017/06/15 21:34:43 by sbonnefo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,12 +106,12 @@ int				ft_putkeynbr(int keycode, t_mlx *param)
 
 	x = 0;
 	y = 0;
+	ft_clean_menu(param);
 	if (keycode == 46)
 		param->menu = (!param->menu) ? 1 : 0;
-	ft_clean_menu(param);
 	ft_putpeaks(param->start, param);
 	param->pers->zy *= (keycode == KEY_HUP) ? 0.6 : 1;
-	param->pers->zy *= (keycode == KEY_HOP) ? 1.4 : 1;
+	param->pers->zy *= (keycode == KEY_HDO) ? 1.4 : 1;
 	param->pers->zy = (keycode == KEY_HINIT) ? 1 : param->pers->zy;
 	if (keycode == KEY_ZM)
 	{
