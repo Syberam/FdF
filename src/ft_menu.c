@@ -6,7 +6,7 @@
 /*   By: sbonnefo <sbonnefo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/23 19:49:21 by sbonnefo          #+#    #+#             */
-/*   Updated: 2017/06/15 21:47:13 by sbonnefo         ###   ########.fr       */
+/*   Updated: 2017/06/15 22:01:20 by sbonnefo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,16 @@
 
 void		ft_clean_menu(t_mlx *param)
 {
-		int		x;
-		int		y;
-			
-		x = 2;
-		while (++x <= 340)
-		{
-			y = 2;
-			while (++y <= 320)
-				mlx_pixel_put(param->mlx, param->win, x, y, 0x00000000);
-		}
+	int		x;
+	int		y;
+
+	x = 2;
+	while (++x <= 340)
+	{
+		y = 2;
+		while (++y <= 320)
+			mlx_pixel_put(param->mlx, param->win, x, y, 0x00000000);
+	}
 }
 
 static void	ft_menu_frame(t_mlx *param)
