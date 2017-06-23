@@ -30,4 +30,4 @@ use m key to show the menu
 
 
 
-//mouvements not finished but enouth to show a mouving map
+//mouvements not finished but enouth to show a mouving map, project objectifs reduiced to finish it with the maximum mark (DONE)
