@@ -1,6 +1,8 @@
 # FdF
 little software to print on screen an image from map based on a .txt file.
 
+[graphic API with MinilibX, kind of little libX, and Cocoa, and OpenGL]
+
 example of easy map of a kind of pyramide colum = x ; rows = y ; values = h :
 
             0 0 0 1 0 0 0\n
@@ -31,3 +33,6 @@ use m key to show the menu, follow its instructions.
 
 
 //mouvements not finished but enouth to show a mouving map, project objectifs reduiced to finish it with the maximum mark (DONE)
+
+
+[graphic API with MinilibX, kind of little libX, and Cocoa, and OpenGL]
