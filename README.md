@@ -18,7 +18,7 @@ make OS="Sierra" on sierra
 
 make OS="Elcapitan" on MacOs Elcapitan
 
-   (and)         PAD="Off" il you're keyboard don't have one.
+   (and)         PAD="Off" il your keyboard don't have one.
 
 
 use ESC key to close the window;
