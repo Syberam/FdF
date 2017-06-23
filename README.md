@@ -1,5 +1,5 @@
 # FdF
-little software to print on screan an iso map based on a .txt file.
+little software to print on screen an image from map based on a .txt file.
 
 example of easy map of a kind of pyramide colum = x ; rows = y ; values = h :
 
@@ -12,7 +12,7 @@ example of easy map of a kind of pyramide colum = x ; rows = y ; values = h :
             0 0 0 1 0 0 0\n 
 
 
-To mac :
+Complile on mac :
 
 make OS="Sierra" on sierra
 
@@ -23,7 +23,7 @@ make OS="Elcapitan" on MacOs Elcapitan
 
 use ESC key to close the window;
 
-use m key to show the menu
+use m key to show the menu, follow its instructions.
 
 
 
