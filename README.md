@@ -4,11 +4,17 @@ little software to print on screan an iso map based on a .txt file.
 example of easy map of a kind of pyramide colum = x ; rows = y ; values = h :
 
 0 0 0 1 0 0 0\n
+
 0 0 1 2 1 0 0\n
+
 0 1 2 3 2 1 0\n
+
 1 2 3 4 3 2 1\n
+
 0 1 2 3 2 1 0\n
+
 0 0 1 2 1 0 0\n
+
 0 0 0 1 0 0 0\n 
 
 
